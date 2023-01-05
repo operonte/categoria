@@ -5,12 +5,12 @@
   </head>
   <body>
 <script>
-  var title = prompt('Ingresa el departamento y un titulo descriptivo:');
+  var titulo = prompt('Ingresa el departamento y un titulo descriptivo:');
 </script>
-    <h1><script>document.write(title);</script></h1>
-    <!-- Crea un formulario con un campo de entrada para el número y un botón para enviar el formulario -->
+    <h1><script>document.write(titulo);</script></h1>
+    <!-- Crea un formulario con un campo de entrada para el número y un botón para enviar el formulario  &code=EAN8   &code=Code128&translate-esc=true  &code=EAN13 -->
     <form>
-      <label for="number">Ingresa un número:</label><br>
+      <label for="number">Ingresa lista ITEM o UPC:</label><br>
       <textarea id="number" name="number"></textarea><br>
       <button type="button" onclick="generateBarcode()">Generar código de barras</button>
     </form>
@@ -26,8 +26,10 @@
         // Itera sobre la matriz de números y genera un código de barras para cada uno de ellos
         for (var i = 0; i < numbers.length; i++) {
           var img = document.createElement('img');
-          img.src = 'https://barcode.tec-it.com/barcode.ashx?data=' + numbers[i] + '&code=EAN13';
-          document.getElementById('barcode').appendChild(img);
+          img.src = 'https://barcode.tec-it.com/barcode.ashx?data=' + numbers[i] + '&code=Code128&translate-esc=true';
+	// Añade un pequeño espacio en blanco entre cada código de barras
+    		img.style.marginRight = "30px";
+    		document.getElementById('barcode').appendChild(img);
         }
       }
     </script>
